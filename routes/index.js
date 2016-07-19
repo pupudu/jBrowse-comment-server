@@ -15,7 +15,7 @@ router.post('/testpost', function(req, res, next) {
   res.json("test post is working");
 });
 
-router.get('/testpostdata', function(req, res, next) {
+router.post('/testpostdata', function(req, res, next) {
   var reply = {
     a: "test post data is working",
     b: req.body
