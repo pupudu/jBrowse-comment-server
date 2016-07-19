@@ -7,6 +7,22 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/testget', function(req, res, next) {
+  res.json("test get is working");
+});
+
+router.post('/testpost', function(req, res, next) {
+  res.json("test post is working");
+});
+
+router.get('/testpostdata', function(req, res, next) {
+  var reply = {
+    a: "test post data is working",
+    b: req.body
+  }
+  res.json(reply);
+});
+
 router.post('/updateThread',function(req,res,next){
 	// console.log(req.body);
     var body = JSON.parse(JSON.stringify(req.body), function(k, v) {
