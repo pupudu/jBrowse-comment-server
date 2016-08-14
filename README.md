@@ -22,6 +22,6 @@ This application uses github based OAuth authentication for logging in users. Th
     Client Id - 2ac3ad3dfc083be6099a
     Client Secret - e83093097cf4379a2ca49886f3f4e5a230638ac4
 
-To use these files when you test, edit the `app.js` file in the root directory. More information about passport-github strategy can be found at `https://github.com/cfsghost/passport-github/blob/master/examples/login/app.js`
+To use these credentials when you test this application, edit the `app.js` file in the root directory and look for the `passport.use(new GitHubStrategy({...}))` section. More information about passport-github strategy can be found at `https://github.com/cfsghost/passport-github/blob/master/examples/login/app.js`
 
 Now the changes you make in the comments track will be permenant and will be saved to the `trackData.json` file. 
