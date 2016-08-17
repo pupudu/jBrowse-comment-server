@@ -4,7 +4,7 @@ var fs = require('fs');
 var passport = require('passport');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     if(req.isAuthenticated()){
         res.render('index');
     }else{
@@ -27,8 +27,7 @@ router.get('/auth/github', passport.authenticate('github', {
 router.get('/callback', passport.authenticate('github', {
     failureRedirect: '/fail'
 }), function (req, res) {
-    console.log("Authenticated callback");
-    res.render('index');
+    res.redirect('/');
 });
 
 router.post('/testpostdata', function(req, res, next) {
