@@ -1,16 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var passport = require('passport');
-
-/* GET home page. */
-router.get('/', function(req, res) {
-    if(req.isAuthenticated()){
-        res.render('index');
-    }else{
-        res.redirect('/auth/github');
-    }
-});
 
 router.get('/testget', function(req, res, next) {
   res.json("test get is working");
@@ -18,16 +8,6 @@ router.get('/testget', function(req, res, next) {
 
 router.post('/testpost', function(req, res, next) {
   res.json("test post is working");
-});
-
-router.get('/auth/github', passport.authenticate('github', {
-    scope: [ 'user:email' ]
-}));
-
-router.get('/callback', passport.authenticate('github', {
-    failureRedirect: '/fail'
-}), function (req, res) {
-    res.redirect('/');
 });
 
 router.post('/testpostdata', function(req, res, next) {
@@ -54,8 +34,6 @@ router.post('/updateThread',function(req,res,next){
     var newThread = body.new;
     var oldThread = body.old;
 
-    console.log(newThread);
-
     if(!newThread){
         return res.status(400).json("Unable to parse thread data from request");
     }
@@ -63,7 +41,7 @@ router.post('/updateThread',function(req,res,next){
     /**
      * Load and parse comment data nclist file content
      */
-    var file = 'public/sample_data/json/volvox/tracks/Comments/ctgA/trackData.json';
+    var file = '../../sample_data/json/volvox/tracks/Comments/ctgA/trackData.json';
     var data = fs.readFileSync(file,{encoding:'utf-8'});
     var dataObj = JSON.parse(data);
 
@@ -136,6 +114,9 @@ router.post('/updateThread',function(req,res,next){
     });
 });
 
+/**
+ * @return {number}
+ */
 function Comparator(a, b) {
     if (a[1] < b[1]) return -1;
     if (a[1] > b[1]) return 1;
