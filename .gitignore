@@ -4,3 +4,4 @@
 .idea/
 
 npm-debug.log
+/public/plugins/CommentFeatures/js/View/Seq.js
