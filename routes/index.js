@@ -41,7 +41,7 @@ router.post('/updateThread',function(req,res,next){
     /**
      * Load and parse comment data nclist file content
      */
-    var file = '../../sample_data/json/volvox/tracks/Comments/ctgA/trackData.json';
+    var file = '../../../sample_data/json/volvox/tracks/Comments/ctgA/trackData.json';
     var data = fs.readFileSync(file,{encoding:'utf-8'});
     var dataObj = JSON.parse(data);
 
